@@ -45,7 +45,7 @@ class Model:
 
     def cerca(self):
         self.best = {}
-        self.costo = 0
+        self.costo = -1
         self.nodi = list(self.g.nodes())
         for n in self.nodi:
             parziale = [n]
@@ -54,7 +54,7 @@ class Model:
         return self.best, self.costo
 
     def ric(self, parziale, nodi):
-        if len(parziale) >= 2 and self.costoC(parziale) > self.costo:
+        if len(parziale) >= 2 and self.costoC(parziale) > self.costo: #len non serve piu
             self.best = copy.deepcopy(parziale)
             self.costo = self.costoC(parziale)
             #return #bloccava i percorsi piu lunghi
